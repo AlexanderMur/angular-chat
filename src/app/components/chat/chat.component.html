@@ -1,0 +1,106 @@
+<div class="container">
+  <!-- Button trigger modal -->
+
+  <div class="ks-page-content">
+    <div class="ks-page-content-body">
+      <div class="ks-messenger">
+        <div [class.show]="roomsShow" class="ks-discussions">
+          <div class="ks-search p-3">
+            <button class="btn btn-success btn-sm" (click)="openModal({action: modalAction.CREATEROOM})">+</button>
+            <button class="btn btn-danger btn-sm ml-auto" (click)="openModal({action: modalAction.DELETEROOM, id: currentRoom._id})">&ndash;</button>
+          </div>
+
+          <overlay-scrollbars class="ks-body" style="height: 400px;" tabindex="0">
+            <div class="jspContainer">
+              <ul *ngIf="rooms$ | async as rooms" class="ks-items">
+                <li *ngFor="let room of rooms" [class.ks-active]="currentRoom?._id === room._id" class="ks-item"
+                    (click)="onChangeRoom(room)">
+                  <a>
+                    <ngx-avatar size="40" name="{{room.name}}"></ngx-avatar>
+                    <div class="ks-body">
+                      <div class="ks-name">
+                        {{room.name}}
+                        <span class="ks-datetime">{{room.createdAt | date:'M/d/yy'}}</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </overlay-scrollbars>
+        </div>
+
+        <div class="ks-messages ks-messenger__messages">
+          <div class="ks-header" (click)="openModal({action: modalAction.UPDATEROOM, id: currentRoom._id, value: currentRoom.name})">
+            <div class="ks-description w-100 d-flex align-items-center justify-content-between">
+              <div class="ks-name">Current room: {{currentRoom?.name}} </div>
+              <button appClickStop (click)="toggleRooms()" class="btn btn-sm btn-primary toggle-rooms-btn">Rooms</button>
+            </div>
+          </div>
+
+          <overlay-scrollbars #scrollMessages class="ks-body" style="height: 400px;" tabindex="0">
+            <div class="jspContainer">
+              <ul *ngIf="messageCurrentRoom$ | async as messages" class="ks-items messages">
+                <li *ngFor="let message of messages" class="ks-item message"
+                    (click)="deleteMessage(message)"
+                    [ngClass]="message.user._id === (userInfo$ | async)?._id ? 'ks-self' : 'ks-from'">
+                      <span class="ks-avatar ks-online">
+                          <ngx-avatar size="36" name="{{message.user.name}}"></ngx-avatar>
+                      </span>
+                  <div class="ks-body">
+                    <div class="ks-header">
+                      <span class="ks-name">{{message.user.name}}</span>
+                      <span class="ks-datetime">{{message.createdAt | date:'h:mm a z'}}</span>
+                    </div>
+                    <div class="ks-body message-body">
+                      <div class="ks-message">{{message.text}}</div>
+                      <div class="like" appClickStop (click)="addLike(message._id)">
+                        <app-like [liked]="isLikedByUser(message, userInfo)"></app-like>
+                        {{message.likes.length}}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </overlay-scrollbars>
+          <div class="ks-footer">
+            <textarea #message class="form-control" placeholder="Type something..."></textarea>
+            <div class="ks-controls">
+              <button [disabled]="!currentRoom" class="btn btn-primary" (click)="sendMessage(currentRoom._id,message.value)">Send</button>
+            </div>
+          </div>
+        </div>
+        <div class="ks-info ks-messenger__info">
+          <div class="ks-header">
+            User Info
+          </div>
+          <div *ngIf="userInfo$ | async as user" class="ks-body">
+
+            <div class="ks-item">
+              <div class="ks-name">User Name</div>
+              <div class="ks-text">
+                {{user.name}}
+              </div>
+            </div>
+
+            <div class="ks-item">
+              <div class="ks-name">Email</div>
+              <div class="ks-text">
+                {{user.email}}
+              </div>
+            </div>
+          </div>
+          <div class="ks-footer">
+            <div class="ks-item">
+              <div class="ks-name">Created:</div>
+              <div class="ks-text">
+                {{currentRoom?.createdAt | date: 'MMM d, y, h:mm:ss a'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

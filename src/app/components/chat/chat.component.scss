@@ -1,0 +1,396 @@
+body {
+  background: #eee
+}
+
+.ks-page-content {
+  margin-top: 20px;
+}
+
+.ks-messenger {
+  display: flex;
+  height: 100%;
+
+  .ks-discussions {
+    background: #fff;
+    width: 340px;
+    border-right: 1px solid #dee0e1
+  }
+
+  .ks-discussions > .ks-body .ks-items {
+    list-style: none;
+    padding: 0;
+    margin: 0
+  }
+
+  .ks-discussions > .ks-search {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid #dee0e1
+  }
+
+}
+
+.ks-header {
+  .ks-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.ks-info {
+  .ks-name {
+    color: #858585;
+    margin-bottom: 3px;
+  }
+}
+
+.ks-discussions {
+  .ks-items {
+    .ks-body {
+      flex-grow: 1;
+    }
+
+    .ks-name {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .ks-datetime {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 400;
+      color: #858585;
+      position: relative;
+    }
+  }
+}
+
+.ks-messages {
+  .ks-body {
+    font-size: 12px;
+
+    .ks-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .ks-datetime {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #858585;
+    }
+  }
+}
+
+.ks-messenger .ks-discussions > .ks-body .ks-items > .ks-item {
+  border-bottom: 1px solid #dee0e1
+}
+
+.ks-messenger .ks-discussions > .ks-body .ks-items > .ks-item > a {
+  display: flex;
+  align-items: center;
+  color: #333;
+  padding: 15px 20px
+}
+
+.ks-messenger .ks-discussions > .ks-body .ks-items > .ks-item.ks-active {
+  background: #ebeef5;
+  color: #333;
+  position: relative
+}
+
+.ks-messenger .ks-discussions > .ks-body .ks-items > .ks-item.ks-active::before {
+  content: '';
+  width: 4px;
+  height: 100%;
+  background: #d7dceb;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ks-messenger .ks-messages,
+.ks-messenger__messages {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: #fff
+}
+
+.ks-messenger .ks-messages > .ks-header,
+.ks-messenger__messages > .ks-header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid #dee0e1;
+  padding: 9px 20px;
+  justify-content: space-between;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken(white, 10%)
+  }
+}
+
+.ks-messenger .ks-messages > .ks-body,
+.ks-messenger__messages > .ks-body {
+  flex-grow: 1
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items,
+.ks-messenger__messages > .ks-body .ks-items {
+  list-style: none;
+  margin: 0;
+  padding: 20px
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item {
+  display: flex;
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item > .ks-body,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item > .ks-body {
+  font-size: 12px;
+  flex-grow: 1;
+  padding: 12px 15px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item.ks-self > .ks-body,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item.ks-self > .ks-body {
+  order: 2;
+  border: solid 1px #dee0e1;
+  border-top-left-radius: 0;
+  margin-left: 14px;
+  margin-right: 50px;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -10px;
+    top: -1px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #dee0e1;
+    border-right: 0 solid transparent;
+    border-bottom: 0 solid transparent;
+    border-left: 10px solid transparent;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #fff;
+    border-right: 0 solid transparent;
+    border-bottom: 0 solid transparent;
+    border-left: 10px solid transparent;
+  }
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item.ks-from > .ks-body,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item.ks-from > .ks-body {
+  order: 1;
+  background-color: #eff1f7;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  margin-right: 14px;
+  margin-left: 50px;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 0 solid transparent;
+    border-right: 0 solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #eff1f7;
+  }
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item.ks-unread.ks-self > .ks-body:after,
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item.ks-unread.ks-self > .ks-body:before,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item.ks-unread.ks-self > .ks-body:after,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item.ks-unread.ks-self > .ks-body:before {
+  border-top: 10px solid #fcf8e7
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item.ks-unread.ks-from > .ks-body:before,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item.ks-unread.ks-from > .ks-body:before {
+  border-left: 10px solid #fcf8e7
+}
+
+.ks-messenger .ks-messages > .ks-footer,
+.ks-messenger__messages > .ks-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #dee0e1;
+  display: flex
+}
+
+.ks-messenger .ks-messages > .ks-body .ks-items > .ks-item.ks-from > .ks-avatar,
+.ks-messenger__messages > .ks-body .ks-items > .ks-item.ks-from > .ks-avatar {
+  order: 2;
+}
+
+.ks-messenger .ks-messages > .ks-footer > .form-control,
+.ks-messenger__messages > .ks-footer > .form-control {
+  flex-grow: 1;
+  height: 38px;
+  overflow: hidden;
+  resize: none;
+  margin-right: 20px
+}
+
+.ks-messenger .ks-info,
+.ks-messenger__info {
+  width: 240px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #dee0e1
+}
+
+.ks-messenger .ks-info > .ks-header,
+.ks-messenger__info > .ks-header {
+  border-bottom: 1px solid #dee0e1;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 20px
+}
+
+.ks-messenger .ks-info > .ks-body,
+.ks-messenger__info > .ks-body {
+  flex-grow: 1;
+  padding: 20px
+}
+
+.ks-messenger .ks-info > .ks-footer,
+.ks-messenger__info > .ks-footer {
+  padding: 20px;
+  border-top: 1px solid #dee0e1
+}
+
+.toggle-rooms-btn {
+  display: none !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .ks-messenger .ks-info,
+  .ks-messenger__info {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  .ks-messenger .ks-discussions {
+    width: 100%
+  }
+
+  .toggle-rooms-btn {
+    display: block !important;
+  }
+
+  .ks-discussions {
+    position: fixed;
+    left: -100%;
+    width: 80% !important;
+    box-shadow: 5px 5px 10px;
+    z-index: 100;
+    transition: .4s ease-in-out;
+
+    &.show {
+      left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .ks-messenger .ks-messages > .ks-footer,
+  .ks-messenger__messages > .ks-footer {
+    flex-direction: column
+  }
+  .ks-messenger .ks-messages > .ks-footer textarea,
+  .ks-messenger__messages > .ks-footer textarea {
+    margin-bottom: 20px
+  }
+  .ks-messenger__ks-messages-footer {
+    flex-direction: column
+  }
+  .ks-messenger__ks-messages-footer textarea {
+    margin-bottom: 20px
+  }
+
+  .ks-item.ks-from .ks-body {
+    margin-left: auto !important;
+  }
+
+  .ks-item.ks-self .ks-body {
+    margin-right: auto !important;
+  }
+}
+
+.messages {
+  .message-body {
+    display: flex;
+
+    .ks-message {
+      flex-shrink: 1;
+      flex-basis: 100%;
+    }
+  }
+}
+
+.ks-discussions .jspContainer .ks-name {
+  margin-left: 10px;
+}
+
+.messages {
+  .message-body {
+    display: flex;
+
+    .ks-message {
+      flex-shrink: 1;
+      flex-basis: 100%;
+    }
+
+    .like {
+      width: 24px;
+      white-space: nowrap;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.ks-messages .ks-items .ks-item.ks-self > .ks-body:hover {
+  cursor: pointer;
+  background-color: darken(white, 10%) !important;
+
+  &:before, &:after {
+    border-top-color: darken(white, 10%) !important;
+  }
+}

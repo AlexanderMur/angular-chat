@@ -1,0 +1,23 @@
+:host {
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  height: 60px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}

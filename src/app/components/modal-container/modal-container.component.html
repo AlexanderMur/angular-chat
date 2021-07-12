@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{fromParent.action}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal('close modal')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<ng-template [ngIf]="fromParent.action !== modalAction.DELETEROOM" [ngIfElse]="deleteTemplate">
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="inputValue">{{fromParent.action}}</label>
+        <div class="input-group">
+          <input id="inputValue" [formControl]="inputValue"class="form-control" name="inputValue">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteTemplate>
+  <div class="modal-body">
+    <h4 class="modal-title">Delete room?</h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="onSubmit()">Delete</button>
+  </div>
+</ng-template>
+
+
+
